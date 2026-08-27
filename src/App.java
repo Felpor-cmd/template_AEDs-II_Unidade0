@@ -56,22 +56,23 @@ public class App {
      */
     static Produto[] lerProdutos(String nomeArquivoDados) {
         String file = nomeArquivoDados;
-
+                
         try (Scanner scanner = new Scanner(file)){
-            if (scanner.hasNextLine()){
-                int quantidadeLinhas = Integer.parseInt(scanner.nextLine());
-                for (int i = 0; i < quantidadeLinhas; i++){
-                        String linha = scanner.nextLine();
-                        String[] data = linha.split(",");
-                        data[i] = linha;
-                    }
-                }
-            return int data[];
-            } catch (Exception e) {
-                System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            
+            int quantidadeLinhas = Integer.parseInt(scanner.nextLine());
+            Produto[] produtos = new Produto[quantidadeLinhas];
+            
+            for (int i = 0; i < quantidadeLinhas; i++){
+                String linha = scanner.nextLine();
+                produtos[i] = Produto.criarDoTexto(linha);
             }
-        
-        return null;
+
+            return produtos;
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            return new Produto[0];
+        }
     }
     
     /** Localiza um produto no vetor de produtos cadastrados, a partir do nome de produto informado pelo usuário, e imprime seus dados. 
