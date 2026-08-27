@@ -125,4 +125,8 @@ public abstract class Produto {
      * @return Uma string no formato "tipo;descrição;preçoDeCusto;margemDeLucro;[dataDeValidade]"
      */
     public abstract String gerarDadosTexto();
+
+    public String getDescricao() {
+        return descricao;
+    }
 }
